@@ -1,0 +1,123 @@
+# 💧 Lab Report: Water Tank Level Monitoring API
+
+## 1. Objective
+The purpose of this lab is to build a RESTful API that records and monitors water tank levels. The system helps track water availability, prevent overflow, and schedule timely refills.
+
+---
+
+## 2. Tools & Technologies
+- **Python 3.x**
+- **FastAPI** (web framework)
+- **TinyDB** (JSON-based NoSQL database)
+- **Datetime** module (timestamp handling)
+- **Uvicorn** (ASGI server)
+
+---
+
+## 3. Code Implementation
+
+```python
+from fastapi import FastAPI
+from tinydb import TinyDB
+from datetime import datetime
+
+app = FastAPI()
+db = TinyDB("tank_db.json")
+
+@app.get("/")
+def home():
+    return {"message": "Water Tank API Running"}
+
+@app.post("/tank")
+def add_tank_level(level: float):
+    """
+    level: water level in liters or percentage
+    """
+    status = "Normal"
+    if level < 20:
+        status = "Low - Refill Needed"
+    elif level > 95:
+        status = "High - Risk of Overflow"
+
+    data = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "level": level,
+        "status": status
+    }
+    db.insert(data)
+    return {"status": "saved", "data": data}
+
+@app.get("/tank")
+def get_tank_levels():
+    return db.all()
+
+
+4. Procedure
+Install dependencies
+
+bash
+pip install fastapi uvicorn tinydb
+Create project file  
+Save the above code in a file named main.py.
+
+Run the server
+
+bash
+uvicorn main:app --reload
+Test endpoints
+
+Root: http://127.0.0.1:8000/
+
+POST tank level:
+http://127.0.0.1:8000/tank?level=50
+
+GET tank levels:
+http://127.0.0.1:8000/tank
+
+Observe results
+
+Data is stored in tank_db.json.
+
+Status messages indicate Low, Normal, or High water levels.
+
+5. Example Responses
+Root Endpoint
+json
+{"message": "Water Tank API Running"}
+POST /tank
+json
+{
+  "status": "saved",
+  "data": {
+    "timestamp": "2026-05-28 16:00:00",
+    "level": 15,
+    "status": "Low - Refill Needed"
+  }
+}
+GET /tank
+json
+[
+  {
+    "timestamp": "2026-05-28 16:00:00",
+    "level": 15,
+    "status": "Low - Refill Needed"
+  }
+]
+6. Results
+API successfully stores and retrieves water tank levels.
+
+System provides status alerts (Low, Normal, High).
+
+Data persists in tank_db.json.
+
+7. Applications
+Household water tank monitoring.
+
+Industrial water storage management.
+
+IoT integration with sensors for real-time monitoring.
+
+Preventing overflow and ensuring timely refills.
+
+8. Conclusion
+This lab demonstrates how to build a water tank monitoring API using FastAPI and TinyDB. The system is lightweight, scalable, and can be extended with IoT sensors or dashboards for real-time visualization.
