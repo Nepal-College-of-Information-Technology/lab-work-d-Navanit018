@@ -109,10 +109,9 @@ AWS EC2 instance launched successfully.
 Nginx web server installed and running.
 Sample HTML page deployed on the server.
 Web page accessed successfully through browser using EC2 public IP address.
-https://cdn.discordapp.com/attachments/1480266351351173267/1505840138977022083/image.png?ex=6a19456a&is=6a17f3ea&hm=101c2b6c3a0692f63d3b19e3f4d40f2b88c15b24f47e45bbc36039768adca05b
 
+Lab/Screenshot 2026-05-28 144732.png
 
-
-
+C:\Users\ACER\OneDrive\Desktop\lab-work-d-Navanit018\Lab\Screenshot 2026-05-28 144732.png
 ## Conclusion
 In this lab, a cloud-based web server was successfully hosted using AWS EC2 and Nginx. The experiment demonstrated how cloud computing enables scalable and remote hosting of applications. Nginx was installed and configured on an EC2 instance, and a sample web page was deployed and accessed through a browser. This lab provided practical knowledge of cloud infrastructure, web server setup, and basic deployment techniques used in IoT and modern web applications.
