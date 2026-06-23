@@ -3,7 +3,7 @@
 ---
 
 ## Objectives
-- Retrieve sensor readings from the REST API created in Lab 2  
+- Retrieve sensor readings from the REST API created in Lab 2
 - Highlight the role of visualization in IoT monitoring  
 - Build a web dashboard to present sensor data interactively  
 - Provide both real‑time and historical views of temperature and humidity  
