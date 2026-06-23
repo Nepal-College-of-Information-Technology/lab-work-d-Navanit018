@@ -1,0 +1,180 @@
+# Lab 3: Visualizing IoT Sensor Data with Interactive Dashboards
+
+---
+
+## Objectives
+- Retrieve sensor readings from the REST API created in Lab 2  
+- Highlight the role of visualization in IoT monitoring  
+- Build a web dashboard to present sensor data interactively  
+- Provide both real‑time and historical views of temperature and humidity  
+- Deploy the dashboard on AWS EC2  
+- Analyze sensor behavior using graphical charts  
+
+---
+
+## Background Theory
+
+### Data Visualization in IoT
+IoT devices generate continuous streams of raw data. Direct interpretation is difficult, so visualization converts these values into charts and graphs that reveal patterns, anomalies, and trends.
+
+### API‑Driven Architecture
+Frontend dashboards interact with backend services through REST APIs. This separation ensures modularity, scalability, and easier maintenance.
+
+### Dashboards
+Dashboards act as monitoring panels, presenting real‑time and historical data in a user‑friendly format. They simplify performance tracking and trend analysis.
+
+### Data Filtering
+Filters allow users to focus on specific ranges or time periods. This improves responsiveness and ensures relevant insights are highlighted.
+
+---
+
+## Procedure
+
+**Step 1: Launch EC2 Instance**  
+- Log in to AWS Console  
+- Start an Ubuntu EC2 instance  
+
+**Step 2: Update Packages**
+```bash
+sudo apt update && sudo apt upgrade -y
+Step 3: Install Tools
+
+bash
+sudo apt install python3-pip python3-venv -y
+Step 4: Create Project Directory
+
+bash
+mkdir iot-dashboard && cd iot-dashboard
+Step 5: Setup Virtual Environment
+
+bash
+python3 -m venv venv
+source venv/bin/activate
+Step 6: Install Dependencies
+
+bash
+pip install fastapi uvicorn tinydb python-multipart
+Step 7: Project Structure
+
+Code
+iot-dashboard/
+│
+├── main.py
+├── db.json
+├── venv/
+└── static/
+    └── index.html
+Step 8: Backend (FastAPI)  
+main.py:
+
+python
+from fastapi import FastAPI
+from tinydb import TinyDB
+from datetime import datetime
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+db = TinyDB("db.json")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def root():
+    return {"status": "Dashboard API Active"}
+
+@app.get("/dashboard")
+def dashboard():
+    return FileResponse("static/index.html")
+
+@app.post("/weather")
+def add_weather(temperature: float, humidity: float):
+    record = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "temperature": temperature,
+        "humidity": humidity
+    }
+    db.insert(record)
+    return {"message": "entry stored", "data": record}
+
+@app.get("/weather")
+def get_weather():
+    return db.all()
+Step 9: Frontend (Dashboard UI)  
+static/index.html:
+
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IoT Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial; background: #eef2f7; margin: 0; }
+        header { background: #1e3c72; color: #fff; padding: 15px; text-align: center; }
+        .cards { display: flex; justify-content: space-around; margin: 20px; }
+        .card { background: #fff; padding: 20px; width: 40%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+        .value { font-size: 28px; font-weight: bold; margin-top: 10px; }
+        canvas { margin: 20px; background: #fff; padding: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<header>IoT Sensor Dashboard</header>
+<div class="cards">
+    <div class="card"><h3>Temperature</h3><div id="temp" class="value">-- °C</div></div>
+    <div class="card"><h3>Humidity</h3><div id="hum" class="value">-- %</div></div>
+</div>
+<canvas id="chart"></canvas>
+<script>
+let chart;
+async function refresh() {
+    const res = await fetch("/weather");
+    const data = await res.json();
+    if (!data.length) return;
+    const latest = data[data.length - 1];
+    document.getElementById("temp").innerText = latest.temperature + " °C";
+    document.getElementById("hum").innerText = latest.humidity + " %";
+    const labels = data.map(d => d.timestamp);
+    const temps = data.map(d => d.temperature);
+    if (chart) chart.destroy();
+    chart = new Chart(document.getElementById("chart"), {
+        type: "line",
+        data: { labels, datasets: [{ label: "Temperature", data: temps, borderColor: "red", fill: false }] }
+    });
+}
+refresh();
+setInterval(refresh, 5000);
+</script>
+</body>
+</html>
+Step 10: Run Server
+
+bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+Step 11: Test Deployment
+
+Dashboard: http://<EC2-Public-IP>/dashboard
+
+API: http://<EC2-Public-IP>/weather
+
+Results
+REST API deployed successfully on AWS EC2
+
+Sensor readings stored and retrieved via TinyDB
+
+Dashboard shows live temperature and humidity values
+
+Historical data plotted using Chart.js line chart
+
+Public access enabled through EC2 instance
+
+Conclusion
+This lab demonstrated the development and deployment of an IoT dashboard on AWS EC2. FastAPI was used for backend services, while Chart.js provided visualization. Real‑time and historical sensor data were displayed interactively, underscoring the importance of visualization in IoT monitoring and trend analysis.
