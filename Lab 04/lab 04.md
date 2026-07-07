@@ -173,3 +173,17 @@ Ability to distinguish sensor functions.
 In this lab, we studied different types of IoT sensors and their roles in real-world systems. Each sensor plays a critical role in collecting environmental data such as temperature, humidity, motion, light, gas levels, and pressure.
 
 These sensors form the backbone of IoT systems by enabling real-time monitoring, automation, and intelligent decision-making in applications such as smart homes, healthcare, agriculture, and industrial systems.
+
+## Screenshots
+
+Embedded images below (descriptive filenames):
+
+![MQ-6 Gas Sensor](./mq6_gas_sensor.png)
+
+![Ultrasonic Sensor](./ultrasonic_sensor.png)
+
+![Voice Sensor](./voice_sensor.png)
+
+![Humidity Sensor](./humidity_sensor.png)
+
+![Pressure Sensor](./pressure_sensor.png)
