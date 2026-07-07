@@ -1,30 +1,4 @@
-**Lab 4: Different Types of IoT Sensors**
-**1. Title : Different Types of IoT Sensors**
-
-**2. Objectives**
-Understand the concept and importance of IoT sensors.
-Identify and classify different types of IoT sensors.
-Study the basic functions of commonly used sensors in IoT systems.
-Learn how sensors are categorized based on physical parameters.
-Understand real-world applications of different IoT sensors.
-**3. Introduction**
-The Internet of Things (IoT) is a system of interconnected physical devices that communicate and exchange data over the internet. These devices rely heavily on sensors to interact with the physical environment.
-
-Sensors act as the "eyes and ears" of IoT systems by detecting environmental changes and converting them into electrical signals. These signals are then processed to enable monitoring, automation, and intelligent decision-making.
-
-**4. Background Theory**
-
-**4.1 Introduction to IoT Sensors**
-IoT sensors are electronic devices that detect changes in physical conditions such as temperature, humidity, light, motion, gas levels, and pressure. They convert these physical changes into measurable electrical signals.
-
-IoT Sensor Working Diagram
-
-**Basic Data Flow:**
-Physical Environment → Sensor → Microcontroller → Cloud/Application
-
-**4.2 Classification of IoT Sensors**
-
-# Lab 4 — Different Types of IoT Sensors
+### Lab 4 — Different Types of IoT Sensors
 
 ## Title
 **Different Types of IoT Sensors**
@@ -86,14 +60,6 @@ Sensors change physical measurements to electrical signals (voltage, resistance,
 3. Sketch small circuit and read values using a microcontroller (e.g., Arduino, ESP)
 4. Record example outputs and analyze
 
-## Output
-- Knowledge of sensor classifications and applications
-- Ability to wire and read basic sensor outputs
-- Understanding of how to integrate sensors into IoT workflows
-
-## Conclusion
-Sensors are fundamental to IoT systems — they collect data that drives automation, monitoring, and analytics. Choosing the right sensor depends on accuracy, interface, cost, and environmental suitability.
-
 ## Images of sensors
 Below are the example sensor images used in this lab. Click to view full size on GitHub.
 
@@ -112,3 +78,13 @@ Below are the example sensor images used in this lab. Click to view full size on
 ### Pressure sensor
 ![Pressure Sensor](./pressure_sensor.png)
 Ultrasonic Sensors
+
+
+## Output
+- Knowledge of sensor classifications and applications
+- Ability to wire and read basic sensor outputs
+- Understanding of how to integrate sensors into IoT workflows
+
+## Conclusion
+Sensors are fundamental to IoT systems — they collect data that drives automation, monitoring, and analytics. Choosing the right sensor depends on accuracy, interface, cost, and environmental suitability.
+
