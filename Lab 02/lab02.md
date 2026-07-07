@@ -119,17 +119,16 @@ IoT integration with sensors for real-time monitoring.
 
 Preventing overflow and ensuring timely refills.
 
-## Screenshots
 
-- Files in this folder: `screenshot1.jpg`, `screenshot2.png`, `screenshot3.png`, `screenshot.png`
+## Photos
 
-- Previews:
+![Root endpoint response](./root_response.png)
 
-![screenshot1](./screenshot1.jpg)
+![POST /tank response](./post_response.png)
 
-![screenshot2](./screenshot2.png)
+![GET /tank response](./get_response.png)
 
-![screenshot3](./screenshot3.png)
+![Server console / Uvicorn output](./server_console.png)
 
 ## Conclusion
 This lab demonstrates how to build a water tank monitoring API using FastAPI and TinyDB. The system is lightweight, scalable, and can be extended with IoT sensors or dashboards for real-time visualization.
