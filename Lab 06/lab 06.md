@@ -165,30 +165,24 @@ Lab 06/
 
 Add the screenshots using:
 
-```html
 <p align="center">
-	<img src="images/esp32_blink_output.png" width="900">
+  <img src="images/esp32_blink_output.png" width="900" alt="ESP32 blink output">
 </p>
-
-<p align="center">
-	<img src="images/esp32_upload_console.png" width="900">
-</p>
-
-<p align="center">
-	<img src="images/dht22_sensor_test.png" width="900">
-</p>
-
-<p align="center">
-	<img src="images/dht22_serial_monitor.png" width="900">
-</p>
-```
-
 *ESP32 Arduino IDE sketch and upload output for the blink program.*
 
+<p align="center">
+  <img src="images/esp32_upload_console.png" width="900" alt="Upload console output">
+</p>
 *Upload console showing write, verify, and reset status.*
 
+<p align="center">
+  <img src="images/dht22_sensor_test.png" width="900" alt="DHT22 sensor test">
+</p>
 *ESP32 DHT22 sensor test sketch in the Arduino IDE.*
 
+<p align="center">
+  <img src="images/dht22_serial_monitor.png" width="900" alt="DHT22 serial monitor output">
+</p>
 *Serial Monitor output showing repeated DHT22 read failures during testing.*
 
 ---
