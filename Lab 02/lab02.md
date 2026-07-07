@@ -128,10 +128,10 @@ This lab demonstrates how to build a water tank monitoring API using FastAPI and
 
 - Previews:
 
-  ![screenshot1](screenshot1.jpg)
+![screenshot1](./screenshot1.jpg)
 
-  ![screenshot2](screenshot2.png)
+![screenshot2](./screenshot2.png)
 
-  ![screenshot3](screenshot3.png)
+![screenshot3](./screenshot3.png)
 
-  ![screenshot](screenshot.png)
+![screenshot](./screenshot.png)
