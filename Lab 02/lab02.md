@@ -16,7 +16,7 @@ The purpose of this lab is to build a RESTful API that records and monitors wate
 
 ## 3. Code Implementation
 
-```python
+
 from fastapi import FastAPI
 from tinydb import TinyDB
 from datetime import datetime
