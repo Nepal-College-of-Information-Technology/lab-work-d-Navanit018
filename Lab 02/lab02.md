@@ -16,7 +16,7 @@ The purpose of this lab is to build a RESTful API that records and monitors wate
 
 ## 3. Code Implementation
 
-
+```
 from fastapi import FastAPI
 from tinydb import TinyDB
 from datetime import datetime
@@ -109,7 +109,7 @@ API successfully stores and retrieves water tank levels.
 System provides status alerts (Low, Normal, High).
 
 Data persists in tank_db.json.
-
+```
 7. Applications
 Household water tank monitoring.
 
@@ -118,9 +118,6 @@ Industrial water storage management
 IoT integration with sensors for real-time monitoring.
 
 Preventing overflow and ensuring timely refills.
-
-8. Conclusion
-This lab demonstrates how to build a water tank monitoring API using FastAPI and TinyDB. The system is lightweight, scalable, and can be extended with IoT sensors or dashboards for real-time visualization.
 
 ## Screenshots
 
@@ -134,4 +131,7 @@ This lab demonstrates how to build a water tank monitoring API using FastAPI and
 
 ![screenshot3](./screenshot3.png)
 
-![screenshot](./screenshot.png)
+## Conclusion
+This lab demonstrates how to build a water tank monitoring API using FastAPI and TinyDB. The system is lightweight, scalable, and can be extended with IoT sensors or dashboards for real-time visualization.
+
+
