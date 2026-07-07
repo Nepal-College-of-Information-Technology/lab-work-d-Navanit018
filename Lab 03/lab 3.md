@@ -35,7 +35,7 @@ Filters allow users to focus on specific ranges or time periods. This improves r
 - Start an Ubuntu EC2 instance  
 
 **Step 2: Update Packages**
-```bash
+
 sudo apt update && sudo apt upgrade -y
 Step 3: Install Tools
 
@@ -176,10 +176,7 @@ Historical data plotted using Chart.js line chart
 
 Public access enabled through EC2 instance
 
-Conclusion
-This lab demonstrated the development and deployment of an IoT dashboard on AWS EC2. FastAPI was used for backend services, while Chart.js provided visualization. Real‑time and historical sensor data were displayed interactively, underscoring the importance of visualization in IoT monitoring and trend analysis.
-
-## Screenshots
+## Output
 
 - Weather dashboard UI (Kathmandu):
 
@@ -188,3 +185,7 @@ This lab demonstrated the development and deployment of an IoT dashboard on AWS 
 - Sensor readings (JSON output):
 
     ![Sensor data JSON](./sensor_data_json.png)
+
+Conclusion
+This lab demonstrated the development and deployment of an IoT dashboard on AWS EC2. FastAPI was used for backend services, while Chart.js provided visualization. Real‑time and historical sensor data were displayed interactively, underscoring the importance of visualization in IoT monitoring and trend analysis.
+
