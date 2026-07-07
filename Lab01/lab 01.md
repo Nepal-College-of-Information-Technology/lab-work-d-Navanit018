@@ -125,12 +125,12 @@ Assessment / Questions
 - How would you secure this server for production use?
 
 Screenshots
-- See the screenshot in this folder: Screenshot 2026-05-28 144732.png.
+ - See the screenshot in this folder: screenshot.png.
 
 - Preview:
 
-  ![Lab screenshot](Screenshot 2026-05-28 144732.png)
+  ![Lab screenshot](screenshot.png)
 
 Conclusion
 This lab demonstrates launching an EC2 instance, installing Nginx, and serving a static website. It reinforces cloud fundamentals such as instance provisioning, SSH access, security groups, and basic server management.
-<img src="Lab01/Screenshot 2026-05-28 144732.png" alt="Lab screenshot" style="max-width:100%;height:auto;">
+<!-- image served in the preview above -->
