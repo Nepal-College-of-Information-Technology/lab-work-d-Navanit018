@@ -45,6 +45,9 @@ sudo apt install python3-pip python3-venv -y
 Step 4: Create Project Directory
 
 bash
+    ![Weather dashboard](./weather_dashboard_kathmandu.png)
+    *Dashboard UI (Kathmandu view).* 
+
 mkdir iot-dashboard && cd iot-dashboard
 Step 5: Setup Virtual Environment
 
@@ -54,6 +57,8 @@ source venv/bin/activate
 Step 6: Install Dependencies
 
 bash
+    ![Sensor data JSON](./sensor_data_json.png)
+    *Example JSON output from the `/weather` endpoint.*
 pip install fastapi uvicorn tinydb python-multipart
 Step 7: Project Structure
 
