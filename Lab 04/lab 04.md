@@ -24,170 +24,91 @@ Physical Environment → Sensor → Microcontroller → Cloud/Application
 
 **4.2 Classification of IoT Sensors**
 
-**A. Based on Physical Parameter Measured**
-Temperature Sensors (LM35, DHT11)
-Humidity Sensors
-Pressure Sensors (BMP180)
-Light Sensors (LDR, Photodiode)
-Motion Sensors (PIR Sensor)
-Gas Sensors (MQ Series)
-**B. Based on Function**
-Environmental Sensors (Temperature, Humidity, Air Quality)
-Motion Detection Sensors (PIR, Ultrasonic)
-Position Sensors (GPS, Accelerometer)
-Optical Sensors (Light, Infrared)
-**5. Types of IoT Sensors**
+# Lab 4 — Different Types of IoT Sensors
 
-**5.1 Temperature Sensors**
-Temperature sensors measure heat levels in an environment. They are widely used in weather monitoring, industrial systems, and smart homes.
+## Title
+**Different Types of IoT Sensors**
 
-Examples: LM35, DHT11
+## Objectives
+- Understand the concept and importance of IoT sensors
+- Identify and classify common IoT sensors
+- Learn basic functions and working principles of each sensor type
+- See typical applications and wiring/use-cases for sensors
 
-Applications:
+## Introduction
+The Internet of Things (IoT) is a network of interconnected devices that sense and interact with the physical world. Sensors are the primary components that collect environmental data and feed it to microcontrollers and cloud systems for processing and action.
 
-HVAC Systems
-Weather Stations
-Industrial Monitoring
-LM35 and DHT11 Temperature Sensors
+## Background Theory
 
-**5.2 Humidity Sensors**
-Humidity sensors measure moisture content in the air. They are used in agriculture, weather forecasting, and environmental monitoring systems.
+### What is a sensor?
+A sensor converts a physical phenomenon (temperature, humidity, pressure, motion, gas concentration, light, etc.) into an electrical signal that can be measured and processed.
 
-Applications:
+### Basic data flow
+Physical environment → Sensor → Microcontroller → Network → Cloud/Application
 
-Smart Farming
-Greenhouses
-Weather Monitoring
-DHT11 Humidity Sensor
+## Classification of IoT sensors
 
-**5.3 Light Sensors**
-Light sensors detect the intensity of light in the surroundings. They are used in automatic street lights, smartphone brightness control, and energy-saving systems.
+### Based on measured parameter
+- **Temperature:** LM35, DHT11
+- **Humidity:** DHT11, DHT22
+- **Pressure:** BMP180, BMP280
+- **Light:** LDR, Photodiode
+- **Motion:** PIR, Ultrasonic (HC-SR04)
+- **Gas:** MQ-series (MQ-2, MQ-6, MQ-135)
 
-Example: LDR (Light Dependent Resistor)
+### Based on function
+- **Environmental sensors:** temperature, humidity, air-quality
+- **Motion/position sensors:** PIR, ultrasonic, accelerometer, GPS
+- **Optical sensors:** light, IR
 
-Applications:
+## Types of IoT Sensors (summary)
+| Sensor Type | Example | Typical Use |
+|---|---:|---|
+| Temperature | LM35, DHT11 | Weather stations, HVAC |
+| Humidity | DHT11 | Agriculture, greenhouse control |
+| Light | LDR | Automatic lighting, displays |
+| Motion | PIR, HC-SR04 | Security, obstacle detection |
+| Gas | MQ-2, MQ-6 | Air quality, leak detection |
+| Pressure | BMP180 | Weather, industrial monitoring |
 
-Automatic Lighting Systems
-Smartphone Brightness Control
-Energy Saving Systems
-LDR Sensor Setup
+## Working principle
+Sensors change physical measurements to electrical signals (voltage, resistance, frequency). Microcontrollers read these signals (ADC/digital inputs), optionally filter/calibrate, and send data to local or cloud applications.
 
-**5.4 Motion Sensors**
-Motion sensors detect movement of objects or humans within a defined area. They are widely used in security systems and automatic doors.
+## Importance and applications
+- Real-time environmental monitoring
+- Automation (smart homes, agriculture)
+- Industry monitoring and predictive maintenance
+- Smart city sensing (traffic, air quality)
 
-Example: PIR Sensor
+## Procedure (theoretical study)
+1. Read datasheets and tutorials for each sensor type
+2. Identify wiring and interface (analog, digital, I2C, SPI)
+3. Sketch small circuit and read values using a microcontroller (e.g., Arduino, ESP)
+4. Record example outputs and analyze
 
-Applications:
+## Output
+- Knowledge of sensor classifications and applications
+- Ability to wire and read basic sensor outputs
+- Understanding of how to integrate sensors into IoT workflows
 
-Smart Security Systems
-Motion Activated Lights
-Automatic Doors
-PIR Motion Sensor
+## Conclusion
+Sensors are fundamental to IoT systems — they collect data that drives automation, monitoring, and analytics. Choosing the right sensor depends on accuracy, interface, cost, and environmental suitability.
 
-**5.5 Gas Sensors**
-Gas sensors detect harmful or specific gases in the environment. They play a major role in safety and industrial monitoring systems.
+## Images of sensors
+Below are the example sensor images used in this lab. Click to view full size on GitHub.
 
-Examples: MQ-2, MQ-135
-
-Applications:
-
-Air Quality Monitoring
-Gas Leakage Detection
-Industrial Safety Systems
-MQ-2 Gas Sensor
-
-**5.6 Pressure Sensors**
-Pressure sensors measure force applied per unit area. They are used in industrial systems, automotive applications, and weather stations.
-
-Applications:
-
-Tire Pressure Monitoring
-Weather Forecasting
-Industrial Automation
-BMP180 Pressure Sensor
-
-**5.7 Proximity Sensors**
-Proximity sensors detect nearby objects without physical contact. They are commonly used in robotics and smartphones.
-
-Types:
-
-Ultrasonic Sensors
-Infrared Sensors
-Applications:
-
-Obstacle Detection
-Robot Navigation
-Smartphone Auto Screen-Off
-HC-SR04 Ultrasonic Sensor
-
-**6. Working Principle of IoT Sensors**
-IoT sensors operate by detecting physical changes and converting them into electrical signals. These signals are processed by microcontrollers and transmitted to IoT platforms for monitoring and decision-making.
-
-IoT Sensors System Architecture
-
-**7. Importance of IoT Sensors**
-Enable real-time monitoring of environments.
-Support automation in smart systems.
-Improve decision-making through data collection.
-Form the foundation of all IoT applications.
-**8. Applications of IoT Sensors**
-Smart Homes
-
-Smart Lighting
-Temperature Control
-Security Systems
-Healthcare
-
-Patient Monitoring
-Wearable Devices
-Smart Health Monitoring
-
-Smart Agriculture
-
-Soil Monitoring
-Weather Monitoring
-Automated Irrigation
-Smart Farming
-
-Industrial Automation
-
-Predictive Maintenance
-Equipment Monitoring
-Smart Cities
-
-Traffic Management
-Environmental Monitoring
-Smart Parking
-Smart City Air Quality Monitoring
-
-Smart Parking System
-
-**9. Procedure (Theoretical Study)**
-Studied different IoT sensors from academic sources.
-Understood the working principles of each sensor type.
-Analyzed real-world applications.
-Classified sensors based on physical parameters and functions.
-Prepared summarized notes for each sensor type.
-**10. Output**
-Clear understanding of IoT sensor types.
-Knowledge of classification methods.
-Awareness of real-world applications.
-Ability to distinguish sensor functions.
-**11. Conclusion**
-In this lab, we studied different types of IoT sensors and their roles in real-world systems. Each sensor plays a critical role in collecting environmental data such as temperature, humidity, motion, light, gas levels, and pressure.
-
-These sensors form the backbone of IoT systems by enabling real-time monitoring, automation, and intelligent decision-making in applications such as smart homes, healthcare, agriculture, and industrial systems.
-
-**Images of sensors**
-
-Embedded images below (descriptive filenames):
-
+### MQ-6 gas sensor
 ![MQ-6 Gas Sensor](./mq6_gas_sensor.png)
 
+### Ultrasonic sensor (HC-SR04)
 ![Ultrasonic Sensor](./ultrasonic_sensor.png)
 
+### Voice sensor
 ![Voice Sensor](./voice_sensor.png)
 
+### Humidity sensor (DHT11 style)
 ![Humidity Sensor](./humidity_sensor.png)
 
+### Pressure sensor
 ![Pressure Sensor](./pressure_sensor.png)
+Ultrasonic Sensors
