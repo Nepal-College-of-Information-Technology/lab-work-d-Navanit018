@@ -62,9 +62,18 @@ Adjust the `DATA` pin in the sample sketch if you use a different GPIO.
 4. Load the example sketch below, replace the `SSID`, `PASSWORD`, and `API_URL` placeholders with your network credentials and your EC2 REST API endpoint.
 5. Upload the sketch to the ESP32 and open the Serial Monitor.
 6. Verify that temperature and humidity readings appear regularly in the Serial Monitor.
+
+	![Serial Monitor](./serial_monitor.png)
+	*Serial Monitor showing periodic temperature & humidity readings.*
 7. Confirm that the ESP32 is able to send HTTP POST requests to the EC2 API and that the API returns a success response (HTTP 200/201 or a JSON success message).
+
+	![API Response](./api_response.png)
+	*Example API response observed after POST from the ESP32.*
 8. Check the cloud database (or use the Lab 2 API GET endpoints) to verify the data is stored.
 9. Open the Lab 3 dashboard and verify that new data points appear on the real-time visualization and historical charts.
+
+	![Dashboard Graph](./dashboard_graph.png)
+	*Dashboard displaying the uploaded sensor data (real-time and historical view).* 
 10. Record your observations, screenshots of Serial Monitor, API responses, and dashboard graphs for the lab report.
 
 ---
