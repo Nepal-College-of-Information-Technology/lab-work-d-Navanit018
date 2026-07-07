@@ -35,6 +35,7 @@ Filters allow users to focus on specific ranges or time periods. This improves r
 - Start an Ubuntu EC2 instance  
 
 **Step 2: Update Packages**
+```
 
 sudo apt update && sudo apt upgrade -y
 Step 3: Install Tools
@@ -164,6 +165,7 @@ Step 11: Test Deployment
 Dashboard: http://<EC2-Public-IP>/dashboard
 
 API: http://<EC2-Public-IP>/weather
+```
 
 Results
 REST API deployed successfully on AWS EC2
