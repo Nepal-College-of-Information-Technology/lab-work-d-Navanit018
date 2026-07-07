@@ -10,108 +10,122 @@
 5.Access the hosted web page through a web browser
 
 ## Theory/Background
-1.Role of Cloud Computing in IoT Systems
+## Lab 01 — Hosting a Web Server on the Cloud
 
-Cloud computing provides storage, processing, and management for IoT devices over the internet. IoT devices generate large amounts of data, and the cloud helps store and analyze this data efficiently. It also enables remote monitoring, scalability, security, and real-time access to IoT applications.
+Title: Hosting a Web Server on AWS EC2 with Nginx
 
-Main roles:
--Data storage and processing
--Remote device monitoring
--Scalability for many devices
--Security and backup
--Real-time analytics
+Objectives
+- Launch an AWS EC2 instance and configure networking/security.
+- Connect to the instance using SSH (Windows/macOS/Linux).
+- Install and configure Nginx to serve a static website.
+- Deploy a sample HTML page and verify access from a browser.
+- Perform basic troubleshooting and secure the server.
 
-2.AWS EC2 (Elastic Compute Cloud)
-AWS EC2 is a cloud service provided by Amazon Web Services that offers virtual servers called instances. Users can run applications, websites, and IoT platforms without buying physical hardware.
+Prerequisites
+- An AWS account or sandbox access with permission to create EC2 instances and security groups.
+- A downloaded key pair (`.pem`) for SSH access.
+- Basic familiarity with the terminal (SSH) and a web browser.
 
-Features:
--Virtual servers in the cloud
--Scalable computing resources
--Pay-as-you-go pricing
--Secure and reliable infrastructure
--Supports Linux and Windows systems
+Background (brief)
+Cloud servers like AWS EC2 allow you to run virtual machines on demand. Nginx is a lightweight, high-performance web server often used to serve static sites and act as a reverse proxy.
 
-Uses:
-Website hosting
-IoT backend servers
-Application deployment
+Materials
+- Ubuntu Server AMI (Ubuntu 20.04/22.04 recommended)
+- Instance type: `t2.micro` (free tier) or equivalent
+- Security group allowing inbound `SSH (22)` and `HTTP (80)`
 
-3.Nginx Web Server
-Nginx is a high-performance open-source web server used to host websites and manage web traffic. It is fast, lightweight, and supports load balancing and reverse proxy services.
+Procedure
 
-Features:
--High-speed web serving
--Load balancing
--Reverse proxy support
--Low resource usage
--Secure communication with SSL/TLS
+1. Launch an EC2 instance
+- In the AWS Console go to EC2 -> Instances -> Launch instances.
+- Choose an Ubuntu Server AMI and an instance type (e.g. `t2.micro`).
+- Configure an existing or new key pair. Download the `.pem` file (keep it safe).
+- Create or select a security group that allows inbound rules for:
+  - SSH (TCP 22) from your IP (restrict to your IP for security).
+  - HTTP (TCP 80) from anywhere (0.0.0.0/0) if you want public access.
+- Launch the instance and note the public IPv4 address.
 
-Uses:
-Hosting websites
-Managing API requests
-IoT dashboard hosting
-Traffic distribution between servers
+2. Connect to the instance (SSH)
+- On macOS/Linux:
+  - Ensure key has correct permissions:
+    chmod 400 path/to/key.pem
+  - Connect:
+    ssh -i path/to/key.pem ubuntu@<PUBLIC_IP>
+- On Windows with PowerShell (OpenSSH):
+  - Run:
+    ssh -i C:\path\to\key.pem ubuntu@<PUBLIC_IP>
+- On Windows with PuTTY:
+  - Convert the `.pem` to `.ppk` using PuTTYgen, then connect with PuTTY using username `ubuntu`.
 
-## Procedure
-Step 1: Access AWS Console
-Open the AWS Sandbox environment.
-Log in to the AWS Management Console.
-
-Step 2: Launch an EC2 Instance
-Navigate to EC2 Dashboard.
-Click Launch Instance.
-Select an Ubuntu Linux AMI.
-Choose instance type (e.g., t2.micro).
-Create or select a key pair.
-Configure security group:
-Allow SSH (Port 22)
-Allow HTTP (Port 80)
-Launch the instance.
-
-Step 3: Connect to EC2 Instance
-Use SSH to connect to the instance:
-  ssh -i key.pem ubuntu@<public-ip>
-
-Step 4: Install Nginx
--Update packages and install Nginx:
+3. Install and start Nginx
+On the EC2 instance run:
   sudo apt update
-  sudo apt install nginx -y
-
--Start and enable Nginx:
+  sudo apt install -y nginx
   sudo systemctl start nginx
   sudo systemctl enable nginx
 
-Step 5: Deploy Sample Web Page
--Create a sample HTML page:
-  sudo nano /var/www/html/index.html
+Verify Nginx is running:
+  sudo systemctl status nginx
+  curl -I localhost
 
--Add the following content:
-   <html>
-   <head>
-   <title>My Cloud Web Server</title>
-   </head>
-   <body>
-   -<h1>Welcome to Nginx Web Server on AWS EC2</h1>
-   </body>
-   </html>
+4. Deploy the sample web page
+Replace the default index page with a simple HTML file:
+  sudo tee /var/www/html/index.html > /dev/null <<'HTML'
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Cloud Web Server</title>
+  </head>
+  <body>
+    <h1>Welcome to Nginx on AWS EC2</h1>
+    <p>This page is served from an EC2 instance running Nginx.</p>
+  </body>
+</html>
+HTML
 
--Save the file.
+Set correct ownership/permissions if needed:
+  sudo chown -R www-data:www-data /var/www/html
+  sudo chmod -R 755 /var/www/html
 
-Step 6: Access the Web Page
-Copy the public IP address of the EC2 instance.
-Open a web browser.
-Enter:
-http://<public-ip>
-The sample web page should appear successfully.
+5. Access the site from your browser
+- Open `http://<PUBLIC_IP>` in your browser. You should see the sample page.
 
-## Output
-AWS EC2 instance launched successfully.
-Nginx web server installed and running.
-Sample HTML page deployed on the server.
-Web page accessed successfully through browser using EC2 public IP address.
+Verification commands
+- From local machine (if `curl` available):
+  curl http://<PUBLIC_IP>
+- From the instance:
+  curl http://localhost
 
-Lab/Screenshot 2026-05-28 144732.png
+Security notes
+- Restrict SSH (`22`) to only the IPs that need access (avoid 0.0.0.0/0).
+- Consider using `ufw` to allow only required ports:
+  sudo apt install -y ufw
+  sudo ufw allow OpenSSH
+  sudo ufw allow 'Nginx Full'
+  sudo ufw enable
 
-C:\Users\ACER\OneDrive\Desktop\lab-work-d-Navanit018\Lab\Screenshot 2026-05-28 144732.png
-## Conclusion
-In this lab, a cloud-based web server was successfully hosted using AWS EC2 and Nginx. The experiment demonstrated how cloud computing enables scalable and remote hosting of applications. Nginx was installed and configured on an EC2 instance, and a sample web page was deployed and accessed through a browser. This lab provided practical knowledge of cloud infrastructure, web server setup, and basic deployment techniques used in IoT and modern web applications.
+Troubleshooting
+- Page not loading:
+  - Verify security group inbound rules include `HTTP (80)`.
+  - Check `nginx` status: `sudo systemctl status nginx`.
+  - Check `/var/log/nginx/error.log` for errors.
+- SSH connection refused:
+  - Ensure the instance is running and the public IP is correct.
+  - Ensure the `.pem` file permissions are set (`chmod 400 key.pem`).
+  - Confirm security group allows SSH from your client IP.
+
+Expected Output
+- `nginx` service is active and enabled.
+- `curl http://<PUBLIC_IP>` returns the HTML page content.
+
+Assessment / Questions
+- What are three advantages of using Nginx for IoT dashboards?
+- How would you secure this server for production use?
+
+Screenshots
+- See the screenshot in this folder: `Screenshot 2026-05-28 144732.png`.
+
+Conclusion
+This lab demonstrates launching an EC2 instance, installing Nginx, and serving a static website. It reinforces cloud fundamentals such as instance provisioning, SSH access, security groups, and basic server management.
