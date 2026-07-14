@@ -13,8 +13,8 @@
 | 3 | Visualizing IoT Sensor Data with Interactive Dashboards | [Lab 3 - Dashboard](Lab 03/lab 3.md) | Chart.js dashboard and FastAPI backend | 2026-06-13 |
 | 4 | Different Types of IoT Sensors | [Lab 4 - Sensors](Lab 04/lab 04.md) | Sensor overview, wiring, and images | 2026-06-25 |
 | 5 | ESP32 DHT22 → Cloud REST API and Dashboard | [Lab 5 - ESP32 to Cloud](Lab 05/lab05.md) | End-to-end IoT data flow (device → API → dashboard) | 2026-07-07 |
+| 6 | Getting Started with ESP32: Blinking the Built-in LED|             | 2026-07-08 |
 
----
 
 
 
